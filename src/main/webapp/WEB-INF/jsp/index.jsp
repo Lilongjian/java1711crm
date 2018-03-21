@@ -27,11 +27,17 @@
 				}
            }
        </script>
+       <style type="text/html">
+             .divNorth{
+                
+              }
+
+       </style>
 	</head>
 
 	<body class="easyui-layout" >
        <!-- 北边-->
-       <div data-options="region:'north'" style="height: 80px;"></div>
+       <div data-options="region:'north'" style="height:80px;background-image: url(${ctx}/static/img/xtbj.jpg);background-size: 100% 80px;padding-top:40px;padding-left:1300px;color:red;font-size:15px" class="divNorth">管理员：admin&nbsp;&nbsp;权限：主管</div>
        <!-- 西边-->
        <div data-options="region:'west',title:'导航菜单' " style="width: 200px;">
 	       <!--手风琴-->
