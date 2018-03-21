@@ -23,9 +23,9 @@ public class CustomerController {
 		return "customer_index";
 	}
 	
-	/*@RequestMapping("/pageList")*/
-	/*@ResponseBody
+	@RequestMapping("/pageList")
+	@ResponseBody
 	public DataGrideResult<Customer> pageList() {
 		return customerService.pageList();
-	}*/
+	}
 }

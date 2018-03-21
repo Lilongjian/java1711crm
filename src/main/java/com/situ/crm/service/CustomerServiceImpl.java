@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.situ.crm.common.DataGrideResult;
 import com.situ.crm.entity.Customer;
 import com.situ.crm.mapper.CustomerMapper;
 @Service
@@ -13,8 +14,9 @@ public class CustomerServiceImpl implements ICustomerService{
 	private CustomerMapper customerMapper;
 
 	@Override
-	public List<Customer> pageList() {
-		return customerMapper.pageList();
-	}
+	public DataGrideResult<Customer>  pageList() {
+		int total = customerMapper.pageList().size();
+		List<Customer> rows = customerMapper.pageList();
+		return new DataGrideResult(total,rows);	}
 
 }
