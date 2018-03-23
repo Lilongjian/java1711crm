@@ -20,9 +20,12 @@ public class UserController {
 	public String index() {
 		return "user_index";
 	}
+	/*public DataGrideResult<User> pageList() {
+		return userService.pageList();
+	}*/
 	@RequestMapping("/pageList")
 	@ResponseBody
-	public DataGrideResult<User> pageList() {
-		return userService.pageList();
-	}
+	public DataGrideResult pageList(Integer page, Integer rows, User user) {
+		 		return userService.pageList(page, rows, user);
+		  	}
 }

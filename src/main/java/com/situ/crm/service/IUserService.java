@@ -6,6 +6,8 @@ import com.situ.crm.entity.User;
 
 public interface IUserService {
 
-	DataGrideResult<User> pageList();
+	/*DataGrideResult<User> pageList();*/
+
+	DataGrideResult pageList(Integer page, Integer rows, User user);
 
 }

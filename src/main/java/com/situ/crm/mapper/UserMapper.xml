@@ -116,9 +116,20 @@
       role_name = #{roleName,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-   <select id="pageList" resultMap="BaseResultMap" >
-    select 
-    <include refid="Base_Column_List" />
-    from user
+   <select id="pageList" resultMap="BaseResultMap" parameterType="user">
+     select 
+     <include refid="Base_Column_List" />
+     from user
+     <where>
+     	<if test="name != null and name != '' ">
+     		and name like concat("%", #{name}, "%")
+     	</if>
+     	<if test="email != null and email != '' ">
+     		and email like concat("%", #{email}, "%")
+     	</if>
+     	<if test="roleName != null and roleName != '' ">
+     		and role_name like concat("%", #{roleName}, "%")
+     	</if>
+     </where>
   </select>
 </mapper>
