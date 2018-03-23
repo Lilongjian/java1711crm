@@ -26,13 +26,8 @@
 					});
 				}
            }
+           
        </script>
-       <style type="text/html">
-             .divNorth{
-                
-              }
-
-       </style>
 	</head>
 
 	<body class="easyui-layout" >
@@ -44,7 +39,7 @@
            <div id="aa" class="easyui-accordion" data-optiopns="border:false,fit:true" >  
               <div title="客户管理"  data-options="iconCls:'icon-khgl'" style="padding:10px;">
                   <a href="javascript:openTab('客户信息管理','${ctx}/customer/index.action','icon-khxxgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khxxgl'" style="width: 150px;">客户信息管理</a>
-                  <a href="javascript:openTab('客户流失管理','customerLossManage.jsp','icon-khlsgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khlsgl'" style="width: 150px;">客户流失管理</a>
+                  <a href="javascript:openTab('客户流失管理','${ctx}/customer/test.action','icon-khlsgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khlsgl'" style="width: 150px;">客户流失管理</a>
                </div>
                <div title="服务管理" data-options="iconCls:'icon-fwgl'" style="padding:10px">
                   <a href="javascript:openTab('服务创建','customerServiceCreate.jsp','icon-fwcj')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-fwcj'" style="width: 150px;">服务创建</a>
@@ -62,7 +57,7 @@
                <div title="基础数据管理"  data-options="iconCls:'icon-jcsjgl'" style="padding:10px">
                   <a href="javascript:openTab('数据字典管理','dataDicManage.jsp','icon-sjzdgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-sjzdgl'" style="width: 150px;">数据字典管理</a>
                   <a href="javascript:openTab('产品信息查询','productSearch.jsp','icon-cpxxgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-cpxxgl'" style="width: 150px;">产品信息查询</a>
-                  <a href="javascript:openTab('用户信息管理','userManage.jsp','icon-user')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-user'" style="width: 150px;">用户信息管理</a>
+                  <a href="javascript:openTab('用户信息管理','${ctx}/user/index.action','icon-user')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-user'" style="width: 150px;">用户信息管理</a>
                </div>
                <div title="系统管理"  data-options="iconCls:'icon-item'" style="padding:10px">
                   <a href="javascript:openPasswordModifyDialog()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-modifyPassword'" style="width: 150px;">修改密码</a>

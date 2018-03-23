@@ -1,34 +1,28 @@
 package com.situ.crm.controller;
 
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.situ.crm.common.DataGrideResult;
-import com.situ.crm.entity.Customer;
-import com.situ.crm.service.ICustomerService;
+import com.situ.crm.entity.User;
+import com.situ.crm.service.IUserService;
 
 @Controller
-@RequestMapping("/customer")
-public class CustomerController {
+@RequestMapping("/user")
+public class UserController {
 	@Autowired
-	private ICustomerService customerService;
+	private IUserService userService;
 
 	@RequestMapping("/index")
 	public String index() {
-		return "customer_index";
-	}
-	@RequestMapping("/test")
-	public String test() {
-		return "test";
+		return "user_index";
 	}
 	@RequestMapping("/pageList")
 	@ResponseBody
-	public DataGrideResult<Customer> pageList() {
-		return customerService.pageList();
+	public DataGrideResult<User> pageList() {
+		return userService.pageList();
 	}
 }

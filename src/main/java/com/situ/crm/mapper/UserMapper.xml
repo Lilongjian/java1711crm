@@ -116,4 +116,9 @@
       role_name = #{roleName,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+   <select id="pageList" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+  </select>
 </mapper>
