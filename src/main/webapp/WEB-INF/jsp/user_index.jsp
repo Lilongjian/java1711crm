@@ -34,6 +34,35 @@
  			    roleName : $("#s_roleName").val() 
  			});  
  		}
+ 		/* 删除 */
+ 				function doDelete() {
+ 					//getSelections none 返回所有被选中的行，当没有记录被选中的时候将返回一个空数组。 
+ 					console.log($("#datagrid").datagrid("getSelections"));
+ 					var ids = util.getSelectedIds($("#datagrid").datagrid("getSelections"));
+ 					console.log(ids.length);
+ 					//[1,2,3]
+ 					if (ids.length == 0) {
+ 						$.messager.alert("系统提示", "请选择要删除的数据");
+ 						return;
+ 					}
+ 					$.messager.confirm("系统提示", "您确认要删除这"+ids.length+"几条数据么", function(r){
+ 						if(r) {
+ 							ids = ids.join(',');// '1,2,3'
+ 							$.ajax({
+ 								url : "${ctx}/user/delete.action",
+ 								data : {ids : ids},
+ 								dataType : "json",
+ 								type : "POST",
+ 								success : function(jsonObj) {
+ 									$.messager.alert("系统提示", jsonObj.msg);
+ 									if(jsonObj.status == util.SUCCESS) {
+ 										$("#datagrid").datagrid("reload");
+ 									}
+ 								}
+ 							});
+ 						}
+ 					});
+ 				}
 </script>
 </head>
 <body>
@@ -42,7 +71,7 @@
 	<div id="toolbar">
 		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add'">添加</a>
 		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-edit'">修改</a>
-		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-remove'">删除</a>
+		<a href="javascript:doDelete()" class="easyui-linkbutton" data-options="iconCls:'icon-remove'">删除</a>
 		<div>
 			用户名：<input type="text" id="s_name"/>
 			邮箱：<input type="text" id="s_email"/>

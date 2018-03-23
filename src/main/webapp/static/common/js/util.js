@@ -17,7 +17,7 @@ var util = {
     	for(var i in data) {
     		ids.push(data[i].id);
     	}
-    	ids = ids.join(',');// '1,2,3'
+    	/*ids = ids.join(',');*/// '1,2,3'
     	return ids;
 	}
 }

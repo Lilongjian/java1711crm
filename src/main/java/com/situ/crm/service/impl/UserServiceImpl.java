@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.situ.crm.common.DataGrideResult;
+import com.situ.crm.common.ServerResponse;
 import com.situ.crm.entity.Customer;
 import com.situ.crm.entity.User;
 import com.situ.crm.mapper.UserMapper;
@@ -29,6 +30,15 @@ public class UserServiceImpl implements IUserService{
  		PageInfo pageInfo = new PageInfo<>(list);
  		Integer total = (int) pageInfo.getTotal();
  		return new DataGrideResult<>(total, list);
+	}
+
+	@Override
+	public ServerResponse delete(String ids) {
+        String[] idsArray = ids.split(",");
+        for (String id : idsArray) {
+			userMapper.deleteByPrimaryKey(Integer.parseInt(id));
+		}
+		return ServerResponse.createSUCCESS("删除成功");
 	}
 
 	/*@Override
