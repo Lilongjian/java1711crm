@@ -41,6 +41,24 @@ public class UserServiceImpl implements IUserService{
 		return ServerResponse.createSUCCESS("删除成功");
 	}
 
+	@Override
+	public ServerResponse add(User user) {
+		int count = userMapper.insert(user);
+		if (count > 0) {
+			return ServerResponse.createSUCCESS("添加成功");
+		}
+		return ServerResponse.createERROR("添加失败");
+	}
+
+	@Override
+	public ServerResponse update(User user) {
+		int count = userMapper.updateByPrimaryKey(user);
+		if (count > 0) {
+			return ServerResponse.createSUCCESS("更新成功");
+		}
+		return ServerResponse.createERROR("添加失败");
+	}
+
 	/*@Override
 	public DataGrideResult<User> pageList() {
 		List<User> list = UserMapper.pageList();
