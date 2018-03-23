@@ -11,7 +11,10 @@
 	  $("#datagrid").datagrid({
 		 url:"${ctx}/user/pageList.action",
 		  method:"get",
+		  fit:true,
+		  fitColumns:true,
 		  pagination:true,
+		  toolbar:"#toolbar",
 		  columns:[[
                     {field:"cb",checkbox:true,align:"center"},
 					{field:"id",title:"编号",width:80,align:"center"},
@@ -27,5 +30,25 @@
 </head>
 <body>
    <table id="datagrid"></table>
+   <!-- toolbar开始 -->
+	<div id="toolbar">
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add'">添加</a>
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-edit'">修改</a>
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-remove'">删除</a>
+		<div>
+			用户名：<input type="text" id="s_name"/>
+			邮箱：<input type="text" id="s_email"/>
+			角色：<select id="s_roleName" class="easyui-combobox" 
+					editable="false" panelHeight="auto">      <!-- editable:控制不能输入。panelHeight：大小适应 -->
+					<option value="">请选择...</option>
+					<option value="系统管理员">系统管理员</option>
+					<option value="销售主管">销售主管</option>
+					<option value="客户经理">客户经理</option>
+					<option value="高管">高管</option>
+				</select>
+			<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">搜索</a>
+		</div>
+	</div>
+ 	<!-- toolbar结束 -->
 </body>
 </html>
