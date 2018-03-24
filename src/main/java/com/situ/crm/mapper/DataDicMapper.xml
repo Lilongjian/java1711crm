@@ -70,4 +70,20 @@
       data_dic_value = #{dataDicValue,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+   <select id="pageList" resultMap="BaseResultMap" parameterType="DataDic">
+     select 
+     <include refid="Base_Column_List" />
+     from  data_dic
+     <where>
+     	<if test="dataDicValue != null and dataDicValue != '' ">
+     		and data_dic_value like concat("%", #{dataDicValue}, "%")
+     	</if>
+     	<if test="dataDicName != null and dataDicName != '' ">
+     		and data_dic_name like concat("%", #{dataDicName}, "%")
+     	</if>
+     </where>
+  </select>
+   <select id="getDataDicName" resultType="String">
+    SELECT  DISTINCT data_dic_name FROM data_dic
+  </select>
 </mapper>

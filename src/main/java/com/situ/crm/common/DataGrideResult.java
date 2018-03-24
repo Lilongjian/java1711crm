@@ -10,6 +10,12 @@ public class DataGrideResult<T> implements Serializable{
 	public DataGrideResult() {
 		super();
 	}
+	
+	public DataGrideResult(List<T> rows) {
+		super();
+		this.rows = rows;
+	}
+
 	public DataGrideResult(Integer total, List<T> rows) {
 		super();
 		this.total = total;
