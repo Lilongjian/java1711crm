@@ -56,6 +56,11 @@ public class DataDicServiceImpl implements IDataDicService{
 		return ServerResponse.createERROR("添加失败");
 	}
 
+	@Override
+	public List<DataDic> selectDataDicName() {
+		return dataDicMapper.selectDataDicName();
+	}
+
 	/*@Override
 	public DataGrideResult<DataDic> pageList() {
 		List<DataDic> list = DataDicMapper.pageList();

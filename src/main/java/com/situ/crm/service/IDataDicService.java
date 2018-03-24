@@ -1,5 +1,7 @@
 package com.situ.crm.service;
 
+import java.util.List;
+
 import com.situ.crm.common.DataGrideResult;
 import com.situ.crm.common.ServerResponse;
 import com.situ.crm.entity.DataDic;
@@ -15,5 +17,7 @@ public interface IDataDicService {
 	ServerResponse add(DataDic dataDic);
 
 	ServerResponse update(DataDic dataDic);
+
+	List<DataDic> selectDataDicName();
 
 }

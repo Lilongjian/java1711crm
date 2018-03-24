@@ -1,6 +1,8 @@
 package com.situ.crm.controller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,13 +28,11 @@ public class DataDicController {
 	public DataGrideResult pageList(Integer page, Integer rows, DataDic dataDic) {
 		 		return dataDicService.pageList(page, rows, dataDic);
 		  	}
-	/*@RequestMapping("/getDataDicName")
+	@RequestMapping("/selectDataDicName")
 	@ResponseBody
-	public List<String> getDataDicName() {
-	List<String> dataDicName = dataDicService.getDataDicName();
-	System.out.println(dataDicName);
-	return null;
-		  	}*/
+	public List<DataDic> selectDataDicName() {
+	return dataDicService.selectDataDicName();
+		  	}
 	@RequestMapping("/delete")
 	 	@ResponseBody
 	 	public ServerResponse delete(String ids) {

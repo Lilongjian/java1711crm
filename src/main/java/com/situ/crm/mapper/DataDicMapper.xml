@@ -8,6 +8,11 @@
       <arg column="data_dic_value" jdbcType="VARCHAR" javaType="java.lang.String" />
     </constructor>
   </resultMap>
+  <resultMap id="ResultMap" type="com.situ.crm.entity.DataDic" >
+      <id column="id" property="id"/>
+      <result column="data_dic_name" property="dataDicName"/>
+      <result column="data_dic_value" property="dataDicValue"/>
+  </resultMap>
   <sql id="Base_Column_List" >
     id, data_dic_name, data_dic_value
   </sql>
@@ -83,7 +88,9 @@
      	</if>
      </where>
   </select>
-   <select id="getDataDicName" resultType="String">
-    SELECT  DISTINCT data_dic_name FROM data_dic
+   <select id="selectDataDicName" resultMap="ResultMap">
+    SELECT  DISTINCT data_dic_name 
+    FROM data_dic
   </select>
+  
 </mapper>
