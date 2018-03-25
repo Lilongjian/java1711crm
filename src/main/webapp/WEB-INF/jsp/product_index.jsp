@@ -9,7 +9,7 @@
 <script type="text/javascript">
   $(function(){
 	  $("#datagrid").datagrid({
-		 url:"${ctx}/dataDic/pageList.action",
+		 url:"${ctx}/product/pageList.action",
 		  method:"get",
 		  fit:true,
 		  fitColumns:true,
@@ -18,8 +18,12 @@
 		  columns:[[
                     {field:"cb",checkbox:true,align:"center"},
 					{field:"id",title:"编号",width:80,align:"center"},
-					{field:"dataDicName",title:"数据字典名",width:80,align:"center"},
-					{field:"dataDicValue",title:"数据字典值",width:80,align:"center"},
+					{field:"name",title:"产品名称",width:80,align:"center"},
+					{field:"model",title:"型号",width:80,align:"center"},
+					{field:"unit",title:"单位",width:80,align:"center"},
+					{field:"price",title:"价格",width:80,align:"center"},
+					{field:"stock",title:"库存",width:80,align:"center"},
+					{field:"remark",title:"备注",width:80,align:"center"},
 		           ]],
 	  });
         $("#dialog").dialog({
@@ -45,8 +49,8 @@
   /* 搜索 */
  		function doSearch(){
  			$('#datagrid').datagrid('load', {    
- 				dataDicName : $("#s_dataDicName").val(),    
- 				dataDicValue : $("#s_dataDicValue").val(),   
+ 				name : $("#s_name").val(),    
+ 				model : $("#s_model").val(),   
  			});  
  		}
  		/* 删除 */
@@ -64,7 +68,7 @@
  						if(r) {
  							ids = ids.join(',');// '1,2,3'
  							$.ajax({
- 								url : "${ctx}/dataDic/delete.action",
+ 								url : "${ctx}/product/delete.action",
  								data : {ids : ids},
  								dataType : "json",
  								type : "POST",
@@ -80,12 +84,12 @@
  				}
  		var url;
  		function openAddDialog(){
- 			url="${ctx}/dataDic/add.action";
+ 			url="${ctx}/product/add.action";
  			$("#dialog").dialog("open").dialog("setTitle","添加信息");
  			$("#form").form("clear");
  		}
  	    function openUpdateDialog(){
- 	    	url="${ctx}/dataDic/update.action";
+ 	    	url="${ctx}/product/update.action";
  	    	var selections = $("#datagrid").datagrid("getSelections");
  	    	if(selections.length == 0){
  	    		$.messager.alert("系统提示","请选择要修改的行");
@@ -128,14 +132,8 @@
 		<a href="javascript:openUpdateDialog()" class="easyui-linkbutton" data-options="iconCls:'icon-edit'">修改</a>
 		<a href="javascript:doDelete()" class="easyui-linkbutton" data-options="iconCls:'icon-remove'">删除</a>
 		<div>
-				数据字典名：<input class="easyui-combobox" name="dept" id="s_dataDicName"
-				    data-options="
-				          url:'${ctx}/dataDic/selectDataDicName1.action',
-				          valueField:'dataDicName',
-				          textField:'dataDicName',
-				          panelHeight:'auto', 
-				          editable:false,"/>
-				数据字典值：<input type="text" id="s_dataDicValue"/>
+				产品名称：<input type="text" id="s_name"/>
+				型号：<input type="text" id="s_model"/>
 			<a href=" javascript:doSearch()" class="easyui-linkbutton" data-options="iconCls:'icon-search'">搜索</a>
 		</div>
 	</div>
@@ -148,16 +146,16 @@
  	         <table cellspacing="8px">
  	            <tr>
  	              <td>数据字典名：</td>
- 	              <!-- <td><input type="text" id="dataDicName" name="dataDicName" class="easyui-validatebox" required="true"/><font color="red">*</font></td> -->
- 	               <td><input class="easyui-combobox" name="dataDicName" id="dataDicName" required='true'
+ 	              <!-- <td><input type="text" id="productName" name="productName" class="easyui-validatebox" required="true"/><font color="red">*</font></td> -->
+ 	               <td><input class="easyui-combobox" name="productName" id="productName" required='true'
 				      data-options="
-				          url:'${ctx}/dataDic/selectDataDicName1.action',
-				          valueField:'dataDicName',
-				          textField:'dataDicName',
+				          url:'${ctx}/product/selectDataDicName1.action',
+				          valueField:'productName',
+				          textField:'productName',
 				          panelHeight:'auto', "/><font color="red">*<font></td>
  	              <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
  	              <td>数据字典值：</td>
- 	              <td><input type="text" id="dataDicValue" name="dataDicValue" class="easyui-validatebox" required="true"/><font color="red">*<font></td>
+ 	              <td><input type="text" id="productValue" name="productValue" class="easyui-validatebox" required="true"/><font color="red">*<font></td>
  	            </tr>
  	         </table>
  	    </form>

@@ -36,7 +36,11 @@
        <!-- 西边-->
        <div data-options="region:'west',title:'导航菜单' " style="width: 200px;">
 	       <!--手风琴-->
-           <div id="aa" class="easyui-accordion" data-optiopns="border:false,fit:true" >  
+           <div id="aa" class="easyui-accordion" data-optiopns="border:false,fit:true" > 
+              <div title="营销管理"  data-options="iconCls:'icon-yxgl'" style="padding:10px;">
+                  <a href="javascript:openTab('营销机会管理','${ctx}/saleChance/index.action','icon-yxjhgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khxxgl'" style="width: 150px;">客户信息管理</a>
+                  <a href="javascript:openTab('客户开发计划','${ctx}/customer/test.action','icon-khkfjh')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khlsgl'" style="width: 150px;">客户流失管理</a>
+              </div> 
               <div title="客户管理"  data-options="iconCls:'icon-khgl'" style="padding:10px;">
                   <a href="javascript:openTab('客户信息管理','${ctx}/customer/index.action','icon-khxxgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khxxgl'" style="width: 150px;">客户信息管理</a>
                   <a href="javascript:openTab('客户流失管理','${ctx}/customer/test.action','icon-khlsgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khlsgl'" style="width: 150px;">客户流失管理</a>
@@ -56,7 +60,7 @@
                </div>
                <div title="基础数据管理"  data-options="iconCls:'icon-jcsjgl'" style="padding:10px">
                   <a href="javascript:openTab('数据字典管理','${ctx}/dataDic/index.action','icon-sjzdgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-sjzdgl'" style="width: 150px;">数据字典管理</a>
-                  <a href="javascript:openTab('产品信息查询','productSearch.jsp','icon-cpxxgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-cpxxgl'" style="width: 150px;">产品信息查询</a>
+                  <a href="javascript:openTab('产品信息查询','${ctx}/product/index.action','icon-cpxxgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-cpxxgl'" style="width: 150px;">产品信息查询</a>
                   <a href="javascript:openTab('用户信息管理','${ctx}/user/index.action','icon-user')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-user'" style="width: 150px;">用户信息管理</a>
                </div>
                <div title="系统管理"  data-options="iconCls:'icon-item'" style="padding:10px">

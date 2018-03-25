@@ -92,5 +92,9 @@
     SELECT  DISTINCT data_dic_name 
     FROM data_dic
   </select>
+   <select id="selectDataDicName1" resultType="String">
+    SELECT  DISTINCT data_dic_name 
+    FROM data_dic
+  </select>
   
 </mapper>

@@ -24,4 +24,6 @@ public interface DataDicMapper {
 	DataGrideResult getDataDicName();
 
 	List<DataDic> selectDataDicName();
+
+	List<String> selectDataDicName1();
 }

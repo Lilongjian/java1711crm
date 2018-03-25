@@ -2,6 +2,7 @@ package com.situ.crm.controller;
 
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,6 +33,11 @@ public class DataDicController {
 	@ResponseBody
 	public List<DataDic> selectDataDicName() {
 	return dataDicService.selectDataDicName();
+		  	}
+	@RequestMapping("/selectDataDicName1")
+	@ResponseBody
+	public List<Map<String,String>> selectDataDicName1() {
+	return dataDicService.selectDataDicName1();
 		  	}
 	@RequestMapping("/delete")
 	 	@ResponseBody

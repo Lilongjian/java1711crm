@@ -116,4 +116,17 @@
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+   <select id="pageList" resultMap="BaseResultMap" parameterType="com.situ.crm.entity.Product" >
+    select 
+    <include refid="Base_Column_List" />
+    from product
+   <where>
+     	<if test="name != null and name != '' ">
+     		and name like concat("%", #{name}, "%")
+     	</if>
+     	<if test="model != null and model !='' ">
+     	    and model like concat("%",#{model},"%")
+     	</if>
+     </where>
+  </select>
 </mapper>

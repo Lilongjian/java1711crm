@@ -3,6 +3,8 @@ package com.situ.crm.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class SaleChance implements Serializable {
     private Integer id;
 
@@ -21,7 +23,7 @@ public class SaleChance implements Serializable {
     private String description;
 
     private String createMan;
-
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone="GMT+8")
     private Date createTime;
 
     private String assignMan;
@@ -180,7 +182,7 @@ public class SaleChance implements Serializable {
         sb.append(", overview=").append(overview);
         sb.append(", linkMan=").append(linkMan);
         sb.append(", linkPhone=").append(linkPhone);
-        sb.append(", description=").append(description);
+        sb.append(", description=").append(description) ;
         sb.append(", createMan=").append(createMan);
         sb.append(", createTime=").append(createTime);
         sb.append(", assignMan=").append(assignMan);
