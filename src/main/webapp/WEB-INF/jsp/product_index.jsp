@@ -145,17 +145,25 @@
  	         <input type="hidden" id="id" name="id"/>
  	         <table cellspacing="8px">
  	            <tr>
- 	              <td>数据字典名：</td>
- 	              <!-- <td><input type="text" id="productName" name="productName" class="easyui-validatebox" required="true"/><font color="red">*</font></td> -->
- 	               <td><input class="easyui-combobox" name="productName" id="productName" required='true'
-				      data-options="
-				          url:'${ctx}/product/selectDataDicName1.action',
-				          valueField:'productName',
-				          textField:'productName',
-				          panelHeight:'auto', "/><font color="red">*<font></td>
+ 	              <td>产品名称：</td>
+ 	              <td><input type="text" id="name" name="name" class="easyui-validatebox" required="true"/><font color="red">*</font></td>
  	              <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
- 	              <td>数据字典值：</td>
- 	              <td><input type="text" id="productValue" name="productValue" class="easyui-validatebox" required="true"/><font color="red">*<font></td>
+ 	              <td>型号：</td>
+ 	              <td><input type="text" id="model" name="model" class="easyui-validatebox" required="true"/><font color="red">*<font></td>
+ 	            </tr>
+ 	            <tr>
+ 	              <td>单位：</td>
+ 	              <td><input type="text" id="unit" name="unit" class="easyui-validatebox" required="true"/><font color="red">*</font></td>
+ 	              <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ 	              <td>价格：</td>
+ 	              <td><input type="text" id="price" name="price" class="easyui-validatebox" required="true"/><font color="red">*<font></td>
+ 	            </tr>
+ 	            <tr>
+ 	              <td>库存：</td>
+ 	              <td><input type="text" id="stock" name="stock" class="easyui-validatebox" required="true"/><font color="red">*</font></td>
+ 	              <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ 	              <td>备注：</td>
+ 	              <td><input type="text" id="remark" name="remark" class="easyui-validatebox" required="true"/><font color="red">*<font></td>
  	            </tr>
  	         </table>
  	    </form>
