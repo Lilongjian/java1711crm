@@ -56,5 +56,9 @@ public class SaleChanceController {
 	public ServerResponse update(SaleChance saleChance){
 		return saleChanceService.update(saleChance);
 	}
+	@RequestMapping("/cusDevPlan")
+	 public String cusDevPlan() {
+		return "cusDevPlan_index";
+	 	}
 	
 }

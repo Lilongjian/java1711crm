@@ -202,16 +202,16 @@
      select 
      <include refid="Base_Column_List" />
      from sale_chance
-    <!--  <where>
-     	<if test="name != null and name != '' ">
-     		and name like concat("%", #{name}, "%")
+    <where>
+    	<if test="chanceSource != null and chanceSource != '' ">
+     		and chance_source like concat("%", #{chanceSource}, "%")
      	</if>
-     	<if test="email != null and email != '' ">
-     		and email like concat("%", #{email}, "%")
+     	<if test="customerName != null and customerName != '' ">
+    		and customer_name like concat("%", #{customerName}, "%")
      	</if>
-     	<if test="roleName != null and roleName != '' ">
-     		and role_name like concat("%", #{roleName}, "%")
+    	<if test="status != null">
+     		and status = #{status}
      	</if>
-     </where> -->
+    </where>
   </select>
 </mapper>
