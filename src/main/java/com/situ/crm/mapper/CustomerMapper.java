@@ -18,4 +18,8 @@ public interface CustomerMapper {
     int updateByPrimaryKey(Customer record);
 
 	List<Customer> pageList();
+
+	List<Customer> pageList(Customer customer);
+
+	List<String> selectManagerName();
 }

@@ -38,8 +38,8 @@
 	       <!--手风琴-->
            <div id="aa" class="easyui-accordion" data-optiopns="border:false,fit:true" > 
               <div title="营销管理"  data-options="iconCls:'icon-yxgl'" style="padding:10px;">
-                  <a href="javascript:openTab('营销机会管理','${ctx}/saleChance/index.action','icon-yxjhgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khxxgl'" style="width: 150px;">客户信息管理</a>
-                  <a href="javascript:openTab('客户开发计划','${ctx}/customer/test.action','icon-khkfjh')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khlsgl'" style="width: 150px;">客户流失管理</a>
+                  <a href="javascript:openTab('营销机会管理','${ctx}/saleChance/index.action','icon-yxjhgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-yxjhgl'" style="width: 150px;">营销机会管理</a>
+                  <a href="javascript:openTab('客户开发计划','${ctx}/customer/test.action','icon-khkfjh')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khkfjh'" style="width: 150px;">客户开发计划</a>
               </div> 
               <div title="客户管理"  data-options="iconCls:'icon-khgl'" style="padding:10px;">
                   <a href="javascript:openTab('客户信息管理','${ctx}/customer/index.action','icon-khxxgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khxxgl'" style="width: 150px;">客户信息管理</a>

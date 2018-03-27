@@ -59,6 +59,11 @@ public class UserServiceImpl implements IUserService{
 		return ServerResponse.createERROR("添加失败");
 	}
 
+	@Override
+ 	public List<User> selectCustomerManagerList() {
+ 	return userMapper.selectCustomerManagerList();
+ 	}
+
 	/*@Override
 	public DataGrideResult<User> pageList() {
 		List<User> list = UserMapper.pageList();

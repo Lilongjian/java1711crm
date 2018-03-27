@@ -12,6 +12,15 @@
       <arg column="role_name" jdbcType="VARCHAR" javaType="java.lang.String" />
     </constructor>
   </resultMap>
+  <resultMap id="ResultMap" type="com.situ.crm.entity.User" >
+      <id column="id" property="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <result column="name" property="name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <result column="password" property="password" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <result column="true_name" property="trueName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <result column="email" property="email" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <result column="phone" property="phone" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <result column="role_name" property="roleName" jdbcType="VARCHAR" javaType="java.lang.String" />
+   </resultMap>
   <sql id="Base_Column_List" >
     id, name, password, true_name, email, phone, role_name
   </sql>
@@ -132,4 +141,9 @@
      	</if>
      </where>
   </select>
+  <select id="selectCustomerManagerList" resultMap="ResultMap">
+  	select true_name,id
+    from user
+    where role_name='客户经理'
+   </select>
 </mapper>

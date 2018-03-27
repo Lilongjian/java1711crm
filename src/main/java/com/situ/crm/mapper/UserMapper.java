@@ -19,5 +19,7 @@ public interface UserMapper {
 
 	List<User> pageList(User user);
 
+	List<User> selectCustomerManagerList();
+
 	/*List<User> pageList();*/
 }
