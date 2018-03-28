@@ -64,7 +64,7 @@
  						$.messager.alert("系统提示", "请选择要删除的数据");
  						return;
  					}
- 					$.messager.confirm("系统提示", "您确认要删除这"+ids.length+"几条数据么", function(r){
+ 					$.messager.confirm("系统提示", "您确认要删除这"+ids.length+"条数据么", function(r){
  						if(r) {
  							ids = ids.join(',');// '1,2,3'
  							$.ajax({

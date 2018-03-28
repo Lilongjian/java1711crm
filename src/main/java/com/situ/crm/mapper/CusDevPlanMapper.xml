@@ -94,4 +94,10 @@
 		exe_affect = #{exeAffect,jdbcType=VARCHAR}
 		where id = #{id,jdbcType=INTEGER}
 	</update>
+	<select id="selectAll" parameterType="int" resultMap="BaseResultMap">
+	    select 
+	    <include refid="Base_Column_List"/>
+	    from cus_dev_plan
+	    where sale_chance_id=#{saleChaneId}
+	</select>
 </mapper>

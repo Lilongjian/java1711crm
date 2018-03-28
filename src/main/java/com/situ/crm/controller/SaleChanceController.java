@@ -60,5 +60,15 @@ public class SaleChanceController {
 	 public String cusDevPlan() {
 		return "cusDevPlan_index";
 	 	}
+	@RequestMapping("/selectById")
+	 @ResponseBody
+ 	public ServerResponse<SaleChance> selectById(Integer id) {
+ 		return saleChanceService.selectById(id);
+ 	}
+	@RequestMapping(value="/updateDevResult")
+ 	@ResponseBody
+ 	public ServerResponse updateDevResult(Integer saleChanceId, Integer devResult){
+ 		return saleChanceService.updateDevResult(saleChanceId, devResult);
+ 	}
 	
 }

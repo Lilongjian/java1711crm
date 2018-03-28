@@ -2,6 +2,8 @@ package com.situ.crm.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.situ.crm.entity.SaleChance;
 
 public interface SaleChanceMapper {
@@ -18,4 +20,6 @@ public interface SaleChanceMapper {
     int updateByPrimaryKey(SaleChance record);
 
 	List<SaleChance> pageList(SaleChance saleChance);
+
+	int updateDevResult(@Param(value="id")Integer id, @Param(value="devResult")Integer devResult);
 }

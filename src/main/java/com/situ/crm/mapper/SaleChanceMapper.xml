@@ -214,4 +214,9 @@
      	</if>
     </where>
   </select>
+  <update id="updateDevResult">
+   update sale_chance
+   set dev_result=#{devResult}
+   where id=#{id}
+  </update>
 </mapper>

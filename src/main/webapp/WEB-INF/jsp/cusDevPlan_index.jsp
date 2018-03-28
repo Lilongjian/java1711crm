@@ -42,10 +42,10 @@
  				    	 }
  				     }},    
  				     {field:'a',title:'操作',width:80,align:'center',formatter:function(value,row,index){
- 				    	 if(row.devResult==3||row.devResult==4){
- 				    		 return "<a href='javascript:openCusDevPlanTab("+row.id+")'>查看详细信息</a>";
+ 				    	 if(row.devResult==2||row.devResult==3){
+ 				    		 return "<a href='javascript:openCusDevPlanTab("+row.id+",false)'>查看详细信息</a>";
  				    	 }else{
- 				    		 return "<a href='javascript:openCusDevPlanInfoTab("+row.id+")'>开发</a>";
+ 				    		 return "<a href='javascript:openCusDevPlanTab("+row.id+",true)'>开发</a>";
  				    	 }
  				     }},    
  				]] 
@@ -53,14 +53,14 @@
  		});
  		
  		//可以修改添加开发项
- 		function openCusDevPlanTab(id){
- 			 window.parent.openTab('客户开发计划项管理','${ctx}/cusDevPlan/index.action?saleChanceId='+id+'&show=true','icon-khkfjh');
+ 		function openCusDevPlanTab(id,isShow){
+ 			 window.parent.openTab('客户开发计划项管理','${ctx}/cusDevPlan/index.action?saleChanceId='+id+'&show='+isShow,'icon-khkfjh');
  		}
  		 
  		//只能查看开发信息
- 		function openCusDevPlanInfoTab(id){
+ 		/* function openCusDevPlanInfoTab(id){
  			window.parent.openTab('查看客户开发计划项','${ctx}/cusDevPlan/index.action?saleChanceId='+id,'icon-khkfjh');
- 		}
+ 		} */
  	</script>
 </head>
 <body>

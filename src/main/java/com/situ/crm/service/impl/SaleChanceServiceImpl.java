@@ -16,7 +16,7 @@ import com.situ.crm.entity.SaleChance;
 import com.situ.crm.mapper.SaleChanceMapper;
 import com.situ.crm.service.ISaleChanceService;
 @Service
-public class ISaleChanceServiceImpl implements ISaleChanceService{
+public class SaleChanceServiceImpl implements ISaleChanceService{
 	@Autowired
 	private SaleChanceMapper saleChanceMapper;
 
@@ -58,6 +58,24 @@ public class ISaleChanceServiceImpl implements ISaleChanceService{
 		}
 		return ServerResponse.createERROR("添加失败");
 	}
+
+	@Override
+	 	public ServerResponse<SaleChance> selectById(Integer saleChanceId) {
+	 		SaleChance saleChance = saleChanceMapper.selectByPrimaryKey(saleChanceId);
+	 		if (saleChance != null) {
+	 			return ServerResponse.createSUCCESS("查找成功", saleChance);
+	 		}
+	 		return ServerResponse.createERROR("查找失败");
+	 	}
+
+	@Override
+ 	public ServerResponse updateDevResult(Integer id, Integer devResult) {
+ 		int count = saleChanceMapper.updateDevResult(id, devResult);
+ 		if (count > 0) {
+ 			return ServerResponse.createSUCCESS("更新成功");
+ 		}
+ 		return ServerResponse.createERROR("更新失败");
+ 	}
 
 	/*@Override
 	public DataGrideResult<SaleChance> pageList() {
