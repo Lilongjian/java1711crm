@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.situ.crm.common.DataGrideResult;
 import com.situ.crm.common.ServerResponse;
 import com.situ.crm.entity.SaleChance;
+import com.situ.crm.entity.SaleChanceVo;
 import com.situ.crm.service.ISaleChanceService;
 
 @Controller
@@ -38,8 +39,8 @@ public class SaleChanceController {
 	}*/
 	@RequestMapping("/pageList")
 	@ResponseBody
-	public DataGrideResult pageList(Integer page, Integer rows, SaleChance saleChance) {
-		 		return saleChanceService.pageList(page, rows, saleChance);
+	public DataGrideResult pageList(Integer page, Integer rows, SaleChanceVo saleChanceVo) {
+		 		return saleChanceService.pageList(page, rows, saleChanceVo);
 		  	}
 	@RequestMapping("/delete")
 	 	@ResponseBody

@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.situ.crm.entity.SaleChance;
+import com.situ.crm.entity.SaleChanceVo;
 
 public interface SaleChanceMapper {
     int deleteByPrimaryKey(Integer id);
@@ -19,7 +20,7 @@ public interface SaleChanceMapper {
 
     int updateByPrimaryKey(SaleChance record);
 
-	List<SaleChance> pageList(SaleChance saleChance);
+	List<SaleChance> pageList(SaleChanceVo saleChanceVo);
 
 	int updateDevResult(@Param(value="id")Integer id, @Param(value="devResult")Integer devResult);
 }

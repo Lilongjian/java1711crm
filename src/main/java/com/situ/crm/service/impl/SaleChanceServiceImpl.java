@@ -13,6 +13,7 @@ import com.situ.crm.common.DataGrideResult;
 import com.situ.crm.common.ServerResponse;
 import com.situ.crm.entity.Customer;
 import com.situ.crm.entity.SaleChance;
+import com.situ.crm.entity.SaleChanceVo;
 import com.situ.crm.mapper.SaleChanceMapper;
 import com.situ.crm.service.ISaleChanceService;
 @Service
@@ -21,11 +22,11 @@ public class SaleChanceServiceImpl implements ISaleChanceService{
 	private SaleChanceMapper saleChanceMapper;
 
 	@Override
-	public DataGrideResult pageList(Integer page, Integer rows, SaleChance saleChance) {
+	public DataGrideResult pageList(Integer page, Integer rows, SaleChanceVo saleChanceVo) {
 		//1.设置分页
  		PageHelper.startPage(page, rows);
  		//2.执行查询(查询的是分页之后的数据)
- 		List<SaleChance> list = saleChanceMapper.pageList(saleChance);
+ 		List<SaleChance> list = saleChanceMapper.pageList(saleChanceVo);
  		//3.得到满足条件的所有数据的数量，而上面的list是满足这个条件的某一页的数据
  		PageInfo pageInfo = new PageInfo<>(list);
  		Integer total = (int) pageInfo.getTotal();

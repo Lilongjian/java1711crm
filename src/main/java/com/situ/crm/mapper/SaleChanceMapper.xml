@@ -198,19 +198,25 @@
       dev_result = #{devResult,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
-   <select id="pageList" resultMap="BaseResultMap" parameterType="saleChance">
+   <select id="pageList" resultMap="BaseResultMap" parameterType="saleChanceVo">
      select 
      <include refid="Base_Column_List" />
      from sale_chance
     <where>
-    	<if test="chanceSource != null and chanceSource != '' ">
-     		and chance_source like concat("%", #{chanceSource}, "%")
+    	<if test="customerName != null and customerName != '' ">
+     		and customer_name like concat("%", #{customerName}, "%")
      	</if>
-     	<if test="customerName != null and customerName != '' ">
-    		and customer_name like concat("%", #{customerName}, "%")
+     	<if test="linkMan != null and linkMan != '' ">
+    		and link_man like concat("%", #{linkMan}, "%")
+     	</if>
+     	<if test="createMan != null and createMan != '' ">
+    		and create_man like concat("%", #{createMan}, "%")
      	</if>
     	<if test="status != null">
      		and status = #{status}
+     	</if>
+     	<if test="createTimeS != null and createTimeS != '' and createTimeE != null and createTimeE != '' ">
+    		and create_time between #{createTimeS} and #{createTimeE}
      	</if>
     </where>
   </select>
