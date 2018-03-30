@@ -20,6 +20,8 @@ public class SaleChanceVo implements Serializable {
     private Date createTimeE;
 
     private Integer status;
+    
+    private Integer devResult;
 
 	public String getCustomerName() {
 		return customerName;
@@ -69,12 +71,22 @@ public class SaleChanceVo implements Serializable {
 		this.status = status;
 	}
 
+	public Integer getDevResult() {
+		return devResult;
+	}
+
+	public void setDevResult(Integer devResult) {
+		this.devResult = devResult;
+	}
+
 	@Override
 	public String toString() {
 		return "SaleChanceVo [customerName=" + customerName + ", linkMan=" + linkMan + ", createMan=" + createMan
-				+ ", createTimeS=" + createTimeS + ", createTimeE=" + createTimeE + ", status=" + status + "]";
+				+ ", createTimeS=" + createTimeS + ", createTimeE=" + createTimeE + ", status=" + status
+				+ ", devResult=" + devResult + "]";
 	}
-    
+
+        
     
 
 }

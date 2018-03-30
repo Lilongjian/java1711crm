@@ -51,7 +51,18 @@
  				]] 
  			});
  		});
- 		
+ 		/* 搜索 */
+		function doSearch(){
+			$('#datagrid').datagrid('load', {    
+				customerName : $("#s_customerName").val(),    
+				linkMan : $("#s_linkMan").val(),   
+				createMan : $("#s_createMan").val(),
+				devResult : $("#s_devResult").val(),
+				CreateTimeS : $("#s_createTimeS").val(),
+				CreateTimeE : $("#s_createTimeE").val(),
+			    
+			});  
+		}
  		//可以修改添加开发项
  		function openCusDevPlanTab(id,isShow){
  			 window.parent.openTab('客户开发计划项管理','${ctx}/cusDevPlan/index.action?saleChanceId='+id+'&show='+isShow,'icon-khkfjh');
@@ -65,5 +76,26 @@
 </head>
 <body>
  <table id="datagrid"></table>
+ <!-- toolbar开始 -->
+ <div id="toolbar">
+ <div>
+        客户名称：<input type="text" id="s_customerName"/>
+	联系人：<input type="text" id="s_linkMan"/>
+	创建人：<input type="text" id="s_createMan"/>
+	开发状态：<select id="s_devResult" class="easyui-combobox" 
+			editable="false" panelHeight="auto">
+			<option value="">请选择...</option>
+			<option value="0">未开发</option>
+			<option value="1">开发中</option>
+			<option value="2">开发成功</option>
+			<option value="3">开发失败</option>
+		</select>
+		<br/>
+		开始时间：<input  id="s_createTimeS"  type= "text" class= "easyui-datebox"> </input> 
+		结束时间：<input  id="s_createTimeE"  type= "text" class= "easyui-datebox"> </input>
+		&nbsp;&nbsp;
+	<a href="javascript:doSearch()" class="easyui-linkbutton" data-options="iconCls:'icon-search'">搜索</a>
+ </div>
+ </div>
 </body>
 </html>

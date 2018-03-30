@@ -212,8 +212,11 @@
      	<if test="createMan != null and createMan != '' ">
     		and create_man like concat("%", #{createMan}, "%")
      	</if>
-    	<if test="status != null">
+    	<if test="status != null and status != '' ">
      		and status = #{status}
+     	</if>
+     	<if test="devResult != null and devResult != '' ">
+     		and dev_result = #{devResult}
      	</if>
      	<if test="createTimeS != null and createTimeS != '' and createTimeE != null and createTimeE != '' ">
     		and create_time between #{createTimeS} and #{createTimeE}
