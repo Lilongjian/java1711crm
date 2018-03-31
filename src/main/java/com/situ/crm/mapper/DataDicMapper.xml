@@ -96,5 +96,10 @@
     SELECT  DISTINCT data_dic_name 
     FROM data_dic
   </select>
-  
+  <select id="selectLevel" resultType="String">
+   select data_dic_value from data_dic where data_dic_name="客户等级"
+  </select>
+  <select id="selectRegion" resultType='String'>
+  select data_dic_value from data_dic where data_dic_name="所在地区"
+  </select>
 </mapper>

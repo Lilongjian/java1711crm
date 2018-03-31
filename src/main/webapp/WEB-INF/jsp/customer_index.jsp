@@ -101,6 +101,20 @@
  	    	$("#dialog").dialog("open").dialog("setTitle","修改信息");
  	    	$("form").form("load",row);
  	    }
+ 	   function openLinkMan(){
+ 			var id =  util.getSelectedIds($('#datagrid').datagrid("getSelections"));
+ 			if(id.length==0){
+ 				$.messager.alert("系统提示", "请选择要查看的数据");
+ 				return;
+ 			}if(id.length>1){
+ 				$.messager.alert("系统提示", "仅允许选中一条数据查看");
+ 				return;
+ 			}if(id.length==1){
+ 			  window.parent.openTab('联系人管理','${ctx}/customer/lxrIndex.action?id='+id,'icon-lxr');
+ 			}
+ 				
+ 			
+	    }
  	    function doAddOrUpdate(){
  	    	$("#form").form("submit",{
  	    		url:url,
@@ -133,6 +147,9 @@
 		<a href="javascript:openAddDialog()" class="easyui-linkbutton" data-options="iconCls:'icon-add'">添加</a>
 		<a href="javascript:openUpdateDialog()" class="easyui-linkbutton" data-options="iconCls:'icon-edit'">修改</a>
 		<a href="javascript:doDelete()" class="easyui-linkbutton" data-options="iconCls:'icon-remove'">删除</a>
+		<a href="javascript:openLinkMan()" class="easyui-linkbutton" data-options="iconCls:'icon-lxr'">联系人管理</a>
+		<a href="javascript:openCommunication()" class="easyui-linkbutton" data-options="iconCls:'icon-jwjl'">交往记录管理</a>
+		<a href="javascript:openHistory()" class="easyui-linkbutton" data-options="iconCls:'icon-jwjl'">历史订单查看</a>
 		<div>
 				客户编号：<input type="text" id="s_num"/>
 				客户名称：<input type="text" id="s_name"/>
@@ -147,19 +164,26 @@
  	         <input type="hidden" id="id" name="id"/>
  	         <table cellspacing="8px">
  	            <tr>
- 	              <td>客户编号：</td>
- 	              <td><input type="text" id="name" name="name" class="easyui-validatebox" required="true"/><font color="red">*</font></td>
+ 	              <td>客户名称：</td>
+ 	              <td><input type="text" id="name" name="name" class="easyui-validatebox" required="true"/><font color="red">*<font></td>
  	              <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
- 	              <td>客户姓名：</td>
- 	              <td><input type="text" id="model" name="model" class="easyui-validatebox" required="true"/><font color="red">*<font></td>
+ 	              <td>客户地区：</td>
+ 	              <td >
+ 	              <input id="region" name="region" class="easyui-combobox" required="true" 
+ 	              data-options="
+ 	              url:'${ctx}/dataDic/selectRegion.action',
+ 	              valueField:'region',
+ 	              textField:'region',
+ 	              panelHeight:'auto',
+ 	              editable:false,"
+ 	              />
+ 	              <font color="red">*</font>
+ 	              </td>
  	            </tr>
  	            <tr>
- 	              <td>客户地区：</td>
- 	              <td><input type="text" id="unit" name="unit" class="easyui-validatebox" required="true"/><font color="red">*</font></td>
- 	              <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
  	              <td>客户经理姓名：</td>
  	              <td>
- 	              <input class="easyui-combobox" name="dept" id="s_managerName"
+ 	              <input class="easyui-combobox" name="managerName" id="managerName" required="true" 
 				    data-options="
 				          url:'${ctx}/customer/selectManagerName.action',
 				          valueField:'managerName',
@@ -168,23 +192,23 @@
 				          editable:false,"/>
  	              <font color="red">*<font>
  	              </td>
- 	            </tr>
- 	            <tr>
+ 	              <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
  	              <td>客户等级：</td>
  	              <td>
- 	              <input class="easyui-combobox" name="dept" id="s_level"
+ 	              <input class="easyui-combobox" name="level" id="level" required="true" 
 				    data-options="
-				          url:'${ctx}/customer/selectLevel.action',
-				          valueField:'customerName',
-				          textField:'customerName',
+				          url:'${ctx}/dataDic/selectLevel.action',
+				          valueField:'levels',
+				          textField:'levels',
 				          panelHeight:'auto', 
 				          editable:false,"/>
  	              <font color="red">*</font>
  	              </td>
- 	              <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ 	            </tr>
+ 	            <tr>
  	              <td>客户满意度：</td>
  	              <td>
- 	              <select id="s_satisfy" class="easyui-combobox" 
+ 	              <select id="satisfy" name="satisfy" class="easyui-combobox" 
 					editable="false" panelHeight="auto">      <!-- editable:控制不能输入。panelHeight：大小适应 -->
 					<option value="">请选择...</option>
 					<option value="☆">☆</option>
@@ -195,11 +219,10 @@
 				 </select>
  	              <font color="red">*<font>
  	              </td>
- 	            </tr>
- 	             <tr>
- 	              <td>客户信用度：</td>
+ 	               <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+ 	               <td>客户信用度：</td>
  	              <td>
- 	               <select id="s_credit" class="easyui-combobox" 
+ 	               <select id="credit" name="credit" class="easyui-combobox"
 					editable="false" panelHeight="auto">      <!-- editable:控制不能输入。panelHeight：大小适应 -->
 					<option value="">请选择...</option>
 					<option value="☆">☆</option>
@@ -210,51 +233,52 @@
 				 </select>
  	              <font color="red">*</font>
  	              </td>
- 	              <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
- 	              <td>客户地址：</td>
- 	              <td><input type="text" id="remark" name="remark" class="easyui-validatebox" required="true"/><font color="red">*<font></td>
  	            </tr>
  	             <tr>
- 	              <td>邮政编码：</td>
- 	              <td><input type="text" id="stock" name="stock" class="easyui-validatebox" required="true"/><font color="red">*</font></td>
+ 	             <td>邮政编码：</td>
+ 	              <td><input type="text" id="postCode" name="postCode" class="easyui-validatebox" required="true"/><font color="red">*</font></td>
  	              <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
  	              <td>联系电话：</td>
- 	              <td><input type="text" id="remark" name="remark" class="easyui-validatebox" required="true"/><font color="red">*<font></td>
+ 	              <td><input type="text" id="phone" name="phone" class="easyui-validatebox" required="true"/><font color="red">*<font></td>
  	            </tr>
  	             <tr>
  	              <td>传真：</td>
- 	              <td><input type="text" id="stock" name="stock" class="easyui-validatebox" required="true"/><font color="red">*</font></td>
+ 	              <td><input type="text" id="fax" name="fax" class="easyui-validatebox" required="true"/><font color="red">*</font></td>
  	              <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
  	              <td>网址：</td>
- 	              <td><input type="text" id="remark" name="remark" class="easyui-validatebox" required="true"/><font color="red">*<font></td>
+ 	              <td><input type="text" id="webSite" name="webSite" class="easyui-validatebox" required="true"/><font color="red">*<font></td>
+ 	            </tr>
+ 	            <tr>
+ 	              <td>客户地址：</td>
+ 	              <td colspan=2><input type="text" id="address" name="address" class="easyui-validatebox" required="true" size="30"/><font color="red">*</font></td>
  	            </tr>
  	             <tr>
  	              <td>营业执照注册号：</td>
- 	              <td><input type="text" id="stock" name="stock" class="easyui-validatebox" required="true"/><font color="red">*</font></td>
+ 	              <td><input type="text" id="licenceNo" name="licenceNo" class="easyui-validatebox" required="true"/><font color="red">*</font></td>
  	              <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
  	              <td>法人：</td>
- 	              <td><input type="text" id="remark" name="remark" class="easyui-validatebox" required="true"/><font color="red">*<font></td>
+ 	              <td><input type="text" id="legalPerson" name="legalPerson" class="easyui-validatebox" required="true"/><font color="red">*<font></td>
  	            </tr>
   	            <tr>
  	              <td>注册资金(万元)：</td>
- 	              <td><input type="text" id="stock" name="stock" class="easyui-validatebox" required="true"/><font color="red">*</font></td>
+ 	              <td><input type="text" id="bankroll" name="bankroll" class="easyui-validatebox" required="true"/><font color="red">*</font></td>
  	              <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
  	              <td>年营业额：</td>
- 	              <td><input type="text" id="remark" name="remark" class="easyui-validatebox" required="true"/><font color="red">*<font></td>
+ 	              <td><input type="text" id="turnover" name="turnover" class="easyui-validatebox" required="true"/><font color="red">*<font></td>
  	            </tr>
  	            <tr>
  	              <td>开户银行：</td>
- 	              <td><input type="text" id="stock" name="stock" class="easyui-validatebox" required="true"/><font color="red">*</font></td>
+ 	              <td><input type="text" id="bankName" name="bankName" class="easyui-validatebox" required="true"/><font color="red">*</font></td>
  	              <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
  	              <td>开户帐号：</td>
- 	              <td><input type="text" id="remark" name="remark" class="easyui-validatebox" required="true"/><font color="red">*<font></td>
+ 	              <td><input type="text" id="bankAccount" name="bankAccount" class="easyui-validatebox" required="true"/><font color="red">*<font></td>
  	            </tr>
  	            <tr>
  	              <td>地税登记号：</td>
- 	              <td><input type="text" id="stock" name="stock" class="easyui-validatebox" required="true"/><font color="red">*</font></td>
+ 	              <td><input type="text" id="localTaxNo" name="localTaxNo" class="easyui-validatebox" required="true"/><font color="red">*</font></td>
  	              <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
  	              <td>国税登记号：</td>
- 	              <td><input type="text" id="remark" name="remark" class="easyui-validatebox" required="true"/><font color="red">*<font></td>
+ 	              <td><input type="text" id="nationalTaxNo" name="nationalTaxNo" class="easyui-validatebox" required="true"/><font color="red">*<font></td>
  	            </tr>
  	         </table>
  	    </form>

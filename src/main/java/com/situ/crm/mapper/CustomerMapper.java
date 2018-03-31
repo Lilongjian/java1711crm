@@ -22,4 +22,5 @@ public interface CustomerMapper {
 	List<Customer> pageList(Customer customer);
 
 	List<String> selectManagerName();
+
 }

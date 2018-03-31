@@ -52,7 +52,7 @@ public class CustomerServiceImpl implements ICustomerService{
 
 	@Override
 	public ServerResponse update(Customer customer) {
-		int count = customerMapper.updateByPrimaryKey(customer);
+		int count = customerMapper.updateByPrimaryKeySelective(customer);
 		if (count > 0) {
 			return ServerResponse.createSUCCESS("更新成功");
 		}
@@ -70,5 +70,12 @@ public class CustomerServiceImpl implements ICustomerService{
 		}
 		return list;
 	}
+
+	@Override
+	public Customer selectById(Integer id) {
+		Customer customer = customerMapper.selectByPrimaryKey(id);
+		return customer;
+	}
+
 
 }

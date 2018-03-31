@@ -54,4 +54,14 @@ public class DataDicController {
 	public ServerResponse update(DataDic dataDic){
 		return dataDicService.update(dataDic);
 	}
+	@RequestMapping("/selectLevel")
+	@ResponseBody
+	public List<Map<String, String>> selectLevel(){
+		return dataDicService.selectLevel();
+	}
+	@RequestMapping("/selectRegion")
+	@ResponseBody
+	public List<Map<String, String>> selectRegion(){
+		return dataDicService.selectRegion();
+	}
 }

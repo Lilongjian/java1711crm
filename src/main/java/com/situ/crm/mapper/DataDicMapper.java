@@ -26,4 +26,8 @@ public interface DataDicMapper {
 	List<DataDic> selectDataDicName();
 
 	List<String> selectDataDicName1();
+
+	List<String> selectLevel();
+
+	List<String> selectRegion();
 }

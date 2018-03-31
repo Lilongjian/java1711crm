@@ -19,4 +19,6 @@ public interface ICustomerService {
 
 	List<Map<String, String>> selectManagerName();
 
+	Customer selectById(Integer id);
+
 }

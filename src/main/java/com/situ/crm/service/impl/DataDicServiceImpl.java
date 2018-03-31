@@ -75,6 +75,29 @@ public class DataDicServiceImpl implements IDataDicService{
 		}
 		return list;
 	}
+	@Override
+	public List<Map<String, String>> selectLevel() {
+		List<String> level = dataDicMapper.selectLevel();
+		List<Map<String, String>> list = new ArrayList<>();
+		for(String levels: level){
+			Map<String, String> map = new HashMap<>();
+			map.put("levels", levels);
+			list.add(map);
+		}
+		return list;
+	}
+
+	@Override
+	public List<Map<String, String>> selectRegion() {
+		List<String> regions = dataDicMapper.selectRegion();
+		List<Map<String, String>> list = new ArrayList<>();
+		for(String regios:regions){
+			Map<String, String> map = new HashMap<>();
+			map.put("region", regios);
+			list.add(map);
+		}
+		return list;
+	}
 
 	/*@Override
 	public DataGrideResult<DataDic> pageList() {

@@ -23,4 +23,8 @@ public interface IDataDicService {
 
 	List<Map<String, String>> selectDataDicName1();
 
+	List<Map<String, String>> selectLevel();
+
+	List<Map<String, String>> selectRegion();
+
 }
