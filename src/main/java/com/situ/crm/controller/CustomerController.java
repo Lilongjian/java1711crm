@@ -71,6 +71,14 @@ public class CustomerController {
 	public String jwjlIndex(){
 		return "customerContact_index";
 	}
+	@RequestMapping("/lsddIndex")
+	public String lsddIndex(){
+		return "customerOrder_index";
+	}
+	@RequestMapping("/customerOrderItemIndex")
+	public String customerOrderItemIndex(){
+		return "customerOrderItem_index";
+	}
 	public static void main(String[] args) {
 		Long curr = System.currentTimeMillis();
 	    SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");

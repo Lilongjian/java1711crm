@@ -107,4 +107,10 @@
 		status = #{status,jdbcType=INTEGER}
 		where id = #{id,jdbcType=INTEGER}
 	</update>
+	<select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+	    select
+		<include refid="Base_Column_List" />
+		from customer_order
+		where customer_id = #{id}
+	</select>
 </mapper>

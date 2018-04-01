@@ -129,6 +129,20 @@
 				
 			
 	    }
+ 	 function openHistory(){
+			var id =  util.getSelectedIds($('#datagrid').datagrid("getSelections"));
+			if(id.length==0){
+				$.messager.alert("系统提示", "请选择要查看的数据");
+				return;
+			}if(id.length>1){
+				$.messager.alert("系统提示", "仅允许选中一条数据查看");
+				return;
+			}if(id.length==1){
+			  window.parent.openTab('历史订单查看','${ctx}/customer/lsddIndex.action?id='+id,'icon-lsdd');
+			}
+				
+			
+	    }
  	    function doAddOrUpdate(){
  	    	$("#form").form("submit",{
  	    		url:url,
@@ -163,7 +177,7 @@
 		<a href="javascript:doDelete()" class="easyui-linkbutton" data-options="iconCls:'icon-remove'">删除</a>
 		<a href="javascript:openLinkMan()" class="easyui-linkbutton" data-options="iconCls:'icon-lxr'">联系人管理</a>
 		<a href="javascript:openCommunication()" class="easyui-linkbutton" data-options="iconCls:'icon-jwjl'">交往记录管理</a>
-		<a href="javascript:openHistory()" class="easyui-linkbutton" data-options="iconCls:'icon-jwjl'">历史订单查看</a>
+		<a href="javascript:openHistory()" class="easyui-linkbutton" data-options="iconCls:'icon-lsdd'">历史订单查看</a>
 		<div>
 				客户编号：<input type="text" id="s_num"/>
 				客户名称：<input type="text" id="s_name"/>

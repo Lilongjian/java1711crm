@@ -1,5 +1,7 @@
 package com.situ.crm.mapper;
 
+import java.util.List;
+
 import com.situ.crm.entity.OrderItem;
 
 public interface OrderItemMapper {
@@ -14,4 +16,6 @@ public interface OrderItemMapper {
     int updateByPrimaryKeySelective(OrderItem record);
 
     int updateByPrimaryKey(OrderItem record);
+
+	List<OrderItem> selectById(Integer id);
 }
