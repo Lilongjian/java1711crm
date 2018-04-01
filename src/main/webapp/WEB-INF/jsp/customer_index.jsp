@@ -115,6 +115,20 @@
  				
  			
 	    }
+ 	  function openCommunication(){
+			var id =  util.getSelectedIds($('#datagrid').datagrid("getSelections"));
+			if(id.length==0){
+				$.messager.alert("系统提示", "请选择要查看的数据");
+				return;
+			}if(id.length>1){
+				$.messager.alert("系统提示", "仅允许选中一条数据查看");
+				return;
+			}if(id.length==1){
+			  window.parent.openTab('交往记录管理','${ctx}/customer/jwjlIndex.action?id='+id,'icon-jwjl');
+			}
+				
+			
+	    }
  	    function doAddOrUpdate(){
  	    	$("#form").form("submit",{
  	    		url:url,

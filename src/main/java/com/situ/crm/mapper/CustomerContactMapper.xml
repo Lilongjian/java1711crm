@@ -94,4 +94,10 @@
 		overview = #{overview,jdbcType=VARCHAR}
 		where id = #{id,jdbcType=INTEGER}
 	</update>
+	<select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+	    select
+		<include refid="Base_Column_List" />
+		from customer_contact
+		where customer_id = #{id} 
+	</select>
 </mapper>

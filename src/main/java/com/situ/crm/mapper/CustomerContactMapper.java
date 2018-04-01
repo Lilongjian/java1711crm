@@ -1,5 +1,7 @@
 package com.situ.crm.mapper;
 
+import java.util.List;
+
 import com.situ.crm.entity.CustomerContact;
 
 public interface CustomerContactMapper {
@@ -14,4 +16,6 @@ public interface CustomerContactMapper {
     int updateByPrimaryKeySelective(CustomerContact record);
 
     int updateByPrimaryKey(CustomerContact record);
+
+	List<CustomerContact> selectById(Integer id);
 }

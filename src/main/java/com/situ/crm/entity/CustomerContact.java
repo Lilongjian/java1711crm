@@ -3,11 +3,13 @@ package com.situ.crm.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class CustomerContact implements Serializable {
     private Integer id;
 
     private Integer customerId;
-
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd",timezone="GMT+8")
     private Date time;
 
     private String address;
